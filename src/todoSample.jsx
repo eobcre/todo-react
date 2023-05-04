@@ -1,16 +1,14 @@
-import { nanoid } from 'nanoid';
-
 export const todoSample = [
   {
-    id: nanoid,
+    id: 1,
     content: 'Study JavaScript',
   },
   {
-    id: nanoid,
+    id: 2,
     content: 'Study React.js',
   },
   {
-    id: nanoid,
+    id: 3,
     content: 'Study TypeScript',
   },
 ];
