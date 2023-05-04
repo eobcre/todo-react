@@ -7,7 +7,7 @@ const App = () => {
   const [inputTodo, setInputTodo] = useState('');
 
   // input settings logic
-  const handleInputChange = (e) => {
+  const handleChangeInput = (e) => {
     setInputTodo(e.target.value);
   };
 
@@ -23,16 +23,24 @@ const App = () => {
     setInputTodo('');
   };
 
+  // done button logic
+  const handleClickDone = (id) => {
+    const newTodos = todos.filter((todoItem) => {
+      return todoItem.id !== id;
+    });
+    setTodos(newTodos);
+  };
+
   return (
-    <div>
+    <div className='container'>
       <h2>List</h2>
-      <input type='text' value={inputTodo} onChange={handleInputChange} />
+      <input type='text' value={inputTodo} onChange={handleChangeInput} />
       <button onClick={handleClickAdd}>Add</button>
       {todos.map(({ id, content }) => {
         return (
           <div key={id}>
             <span>{content}</span>
-            <button>Done</button>
+            <button onClick={() => handleClickDone(id)}>Done</button>
           </div>
         );
       })}
