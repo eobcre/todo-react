@@ -44,8 +44,10 @@ const App = () => {
       {todos.map(({ id, content }) => {
         return (
           <div key={id} className='todo-container'>
-            <span>{content}</span>
-            <button onClick={() => handleClickDone(id)}>Done</button>
+            <div className='todo-item'>
+              <span>{content}</span>
+              <button onClick={() => handleClickDone(id)}>Done</button>
+            </div>
           </div>
         );
       })}
