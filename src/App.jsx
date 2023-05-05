@@ -12,7 +12,8 @@ const App = () => {
   };
 
   // add button logic
-  const handleClickAdd = () => {
+  const handleClickAdd = (e) => {
+    e.preventDefault();
     const newTodo = {
       id: nanoid(),
       content: inputTodo,
@@ -33,12 +34,16 @@ const App = () => {
 
   return (
     <div className='container'>
-      <h2>List</h2>
-      <input type='text' value={inputTodo} onChange={handleChangeInput} />
-      <button onClick={handleClickAdd}>Add</button>
+      <div className='form-container'>
+        <h2>List</h2>
+        <form onSubmit={handleClickAdd}>
+          <input type='text' value={inputTodo} onChange={handleChangeInput} />
+          <button>Add</button>
+        </form>
+      </div>
       {todos.map(({ id, content }) => {
         return (
-          <div key={id}>
+          <div key={id} className='todo-container'>
             <span>{content}</span>
             <button onClick={() => handleClickDone(id)}>Done</button>
           </div>
